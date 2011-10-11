@@ -98,4 +98,4 @@ def kwotaslownie(liczba, format = 0):
         groszslownie = cosslownie(lgroszy, grosze)
     else:
         groszslownie = '%d/100' % lgroszy
-    return cosslownie(lzlotych, przypzl) + u" " +  groszslownie
+    return cosslownie(lzlotych, zlotowki) + u" " +  groszslownie
