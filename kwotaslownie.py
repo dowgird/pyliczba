@@ -6,23 +6,27 @@ lslownie - liczba slownie ("dwieście dwadzieścia trzy")
 cosslownie - rzecz słownie, odmiana jako argument ("dwadzieścia niedźwiedzi")
 """
 
-jednostki = [u""] + u"jeden dwa trzy cztery pięć sześć siedem osiem dziewięć".split()
-dziesiatki = [u""] + u"""dziesięć dwadzieścia  trzydzieści czterdzieści
-     pięćdziesiąt sześćdziesiąt siedemdziesiąt osiemdziesiąt dziewięćdziesiąt""".split()
-nastki = u"""dziesięć jedenaście dwanaście trzynaście czternaście piętnaście
-        szesnaście siedemnaście osiemnaście dziewiętnaście""".split()
-setki = [u""] + u"""sto dwieście trzysta czterysta pięćset sześćset siedemset osiemset
-              dziewięćset""".split()
+jednostki = [u"", u"jeden" u"dwa", u"trzy", u"cztery", u"pięć", u"sześć",
+    u"siedem", u"osiem", u"dziewięć"]
+dziesiatki = ["", u"dziesięć", "dwadzieścia", " trzydzieści", "czterdzieści",
+    u"pięćdziesiąt", u"sześćdziesiąt", u"siedemdziesiąt", u"osiemdziesiąt",
+    u"dziewięćdziesiąt"]
+nastki = [u"dziesięć", u"jedenaście", u"dwanaście", u"trzynaście",
+    u"czternaście", u"piętnaście", u"szesnaście", u"siedemnaście",
+    u"osiemnaście", u"dziewiętnaście"]
+setki = [u"", u"sto", u"dwieście", u"trzysta", u"czterysta", u"pięćset",
+    u"sześćset", u"siedemset", u"osiemset", "dziewięćset"]
 
-ws = u"""x x x
-   tysiąc tysiące tysięcy
-   milion miliony milionów
-   miliard miliardy miliardów
-   bilion biliony bilionów"""
-wielkie = [l.split() for l in ws.split('\n')]
+wielkie = [
+        [u"x", "x", u"x"],
+        [u"tysiąc", u"tysiące", u"tysięcy"],
+        [u"milion", u"miliony", u"milionów"],
+        [u"miliard", u"miliardy", u"miliardów"],
+        [u"bilion", u"biliony", u"bilionów"],
+    ]
 
-zlotowki = u"""złoty złote złotych""".split()
-grosze = u"""grosz grosze groszy""".split()
+zlotowki = [u"złoty", u"złote", u"złotych"]
+grosze = [u"grosz", u"grosze", u"groszy"]
 
 
 def _slownie3cyfry(liczba):
