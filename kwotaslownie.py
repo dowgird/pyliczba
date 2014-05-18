@@ -6,18 +6,18 @@ lslownie - liczba slownie ("dwieście dwadzieścia trzy")
 cosslownie - rzecz słownie, odmiana jako argument ("dwadzieścia niedźwiedzi")
 """
 
-jednostki = [u"", u"jeden" u"dwa", u"trzy", u"cztery", u"pięć", u"sześć",
+JEDNOSTKI = [u"", u"jeden" u"dwa", u"trzy", u"cztery", u"pięć", u"sześć",
     u"siedem", u"osiem", u"dziewięć"]
-dziesiatki = ["", u"dziesięć", "dwadzieścia", " trzydzieści", "czterdzieści",
+DZIESIATKI = ["", u"dziesięć", "dwadzieścia", " trzydzieści", "czterdzieści",
     u"pięćdziesiąt", u"sześćdziesiąt", u"siedemdziesiąt", u"osiemdziesiąt",
     u"dziewięćdziesiąt"]
-nastki = [u"dziesięć", u"jedenaście", u"dwanaście", u"trzynaście",
+NASTKI = [u"dziesięć", u"jedenaście", u"dwanaście", u"trzynaście",
     u"czternaście", u"piętnaście", u"szesnaście", u"siedemnaście",
     u"osiemnaście", u"dziewiętnaście"]
-setki = [u"", u"sto", u"dwieście", u"trzysta", u"czterysta", u"pięćset",
+SETKI = [u"", u"sto", u"dwieście", u"trzysta", u"czterysta", u"pięćset",
     u"sześćset", u"siedemset", u"osiemset", "dziewięćset"]
 
-wielkie = [
+WIELKIE = [
         [u"x", "x", u"x"],
         [u"tysiąc", u"tysiące", u"tysięcy"],
         [u"milion", u"miliony", u"milionów"],
@@ -25,8 +25,8 @@ wielkie = [
         [u"bilion", u"biliony", u"bilionów"],
     ]
 
-zlotowki = [u"złoty", u"złote", u"złotych"]
-grosze = [u"grosz", u"grosze", u"groszy"]
+ZLOTOWKI = [u"złoty", u"złote", u"złotych"]
+GROSZE = [u"grosz", u"grosze", u"groszy"]
 
 
 def _slownie3cyfry(liczba):
@@ -36,14 +36,14 @@ def _slownie3cyfry(liczba):
     slowa = []
 
     if se > 0:
-        slowa.append(setki[se])
+        slowa.append(SETKI[se])
     if dz == 1:
-        slowa.append(nastki[je])
+        slowa.append(NASTKI[je])
     else:
         if dz > 0:
-            slowa.append(dziesiatki[dz])
+            slowa.append(DZIESIATKI[dz])
         if je > 0:
-            slowa.append(jednostki[je])
+            slowa.append(JEDNOSTKI[je])
     retval = " ".join(slowa)
     return retval
 
@@ -77,7 +77,7 @@ def lslownie(liczba):
         if n > 0:
             if i > 0:
                 p = _przypadek(n)
-                w = wielkie[i][p]
+                w = WIELKIE[i][p]
                 slowa.append(_slownie3cyfry(n) + u" " + w)
             else:
                 slowa.append(_slownie3cyfry(n))
@@ -103,7 +103,7 @@ def kwotaslownie(liczba, fmt=0):
     lzlotych = int(liczba)
     lgroszy = int(liczba * 100 + 0.5) % 100
     if fmt != 0:
-        groszslownie = cosslownie(lgroszy, grosze)
+        groszslownie = cosslownie(lgroszy, GROSZE)
     else:
         groszslownie = '%d/100' % lgroszy
-    return cosslownie(lzlotych, zlotowki) + u" " + groszslownie
+    return cosslownie(lzlotych, ZLOTOWKI) + u" " + groszslownie
