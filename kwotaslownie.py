@@ -68,7 +68,7 @@ def lslownie(liczba):
     """Liczba całkowita słownie"""
     trojki = []
     if liczba == 0:
-        return u'zero'
+        return u"zero"
     while liczba > 0:
         trojki.append(liczba % 1000)
         liczba = liczba // 1000
@@ -82,7 +82,7 @@ def lslownie(liczba):
             else:
                 slowa.append(_slownie3cyfry(n))
     slowa.reverse()
-    return ' '.join(slowa)
+    return " ".join(slowa)
 
 
 def cosslownie(liczba, cos):
@@ -105,5 +105,5 @@ def kwotaslownie(liczba, fmt=0):
     if fmt != 0:
         groszslownie = cosslownie(lgroszy, GROSZE)
     else:
-        groszslownie = '%d/100' % lgroszy
+        groszslownie = "%d/100" % lgroszy
     return cosslownie(lzlotych, ZLOTOWKI) + u" " + groszslownie
