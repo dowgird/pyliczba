@@ -6,7 +6,7 @@ lslownie - liczba slownie ("dwieście dwadzieścia trzy")
 cosslownie - rzecz słownie, odmiana jako argument ("dwadzieścia niedźwiedzi")
 """
 
-JEDNOSTKI = [u"", u"jeden" u"dwa", u"trzy", u"cztery", u"pięć", u"sześć",
+JEDNOSTKI = [u"", u"jeden", u"dwa", u"trzy", u"cztery", u"pięć", u"sześć",
     u"siedem", u"osiem", u"dziewięć"]
 DZIESIATKI = ["", u"dziesięć", "dwadzieścia", " trzydzieści", "czterdzieści",
     u"pięćdziesiąt", u"sześćdziesiąt", u"siedemdziesiąt", u"osiemdziesiąt",
