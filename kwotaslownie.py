@@ -90,15 +90,15 @@ def cosslownie(liczba, cos):
     return lslownie(liczba) + u" " + cos[_przypadek(liczba)]
 
 
-def kwotaslownie(liczba, format=0):
+def kwotaslownie(liczba, fmt=0):
     """Słownie złotych, groszy.
 
     liczba - float, liczba złotych z groszami po przecinku
-    format - jesli 0, to grosze w postaci xx/100, słownie w p. przypadku
+    fmt - (format) jesli 0, to grosze w postaci xx/100, słownie w p. przypadku
     """
     lzlotych = int(liczba)
     lgroszy = int(liczba * 100 + 0.5) % 100
-    if format != 0:
+    if fmt != 0:
         groszslownie = cosslownie(lgroszy, grosze)
     else:
         groszslownie = '%d/100' % lgroszy
