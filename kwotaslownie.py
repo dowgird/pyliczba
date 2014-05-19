@@ -6,96 +6,104 @@ lslownie - liczba slownie ("dwieście dwadzieścia trzy")
 cosslownie - rzecz słownie, odmiana jako argument ("dwadzieścia niedźwiedzi")
 """
 
-jednostki = [u""] + u"jeden dwa trzy cztery pięć sześć siedem osiem dziewięć".split()
-dziesiatki = [u""] + u"""dziesięć dwadzieścia  trzydzieści czterdzieści 
-     pięćdziesiąt sześćdziesiąt siedemdziesiąt osiemdziesiąt dziewięćdziesiąt""".split()
-nastki = u"""dziesięć jedenaście dwanaście trzynaście czternaście piętnaście 
-        szesnaście siedemnaście osiemnaście dziewiętnaście""".split()
-setki = [u""]+ u"""sto dwieście trzysta czterysta pięćset sześćset siedemset osiemset
-              dziewięćset""".split()
+JEDNOSTKI = [u"", u"jeden", u"dwa", u"trzy", u"cztery", u"pięć", u"sześć",
+    u"siedem", u"osiem", u"dziewięć"]
+DZIESIATKI = ["", u"dziesięć", "dwadzieścia", " trzydzieści", "czterdzieści",
+    u"pięćdziesiąt", u"sześćdziesiąt", u"siedemdziesiąt", u"osiemdziesiąt",
+    u"dziewięćdziesiąt"]
+NASTKI = [u"dziesięć", u"jedenaście", u"dwanaście", u"trzynaście",
+    u"czternaście", u"piętnaście", u"szesnaście", u"siedemnaście",
+    u"osiemnaście", u"dziewiętnaście"]
+SETKI = [u"", u"sto", u"dwieście", u"trzysta", u"czterysta", u"pięćset",
+    u"sześćset", u"siedemset", u"osiemset", "dziewięćset"]
 
-ws=u"""x x x
-   tysiąc tysiące tysięcy
-   milion miliony milionów
-   miliard miliardy miliardów
-   bilion biliony bilionów"""
-wielkie = [ l.split() for l in ws.split('\n') ]
+WIELKIE = [
+        [u"x", "x", u"x"],
+        [u"tysiąc", u"tysiące", u"tysięcy"],
+        [u"milion", u"miliony", u"milionów"],
+        [u"miliard", u"miliardy", u"miliardów"],
+        [u"bilion", u"biliony", u"bilionów"],
+    ]
 
-zlotowki=u"""złoty złote złotych""".split()
-grosze=u"""grosz grosze groszy""".split()
+ZLOTOWKI = [u"złoty", u"złote", u"złotych"]
+GROSZE = [u"grosz", u"grosze", u"groszy"]
+
 
 def _slownie3cyfry(liczba):
     je = liczba % 10
-    dz = (liczba//10) % 10
-    se = (liczba//100) % 10
-    slowa=[]
-    
-    if se>0:
-        slowa.append(setki[se])
-    if dz==1:
-        slowa.append(nastki[je])
+    dz = (liczba // 10) % 10
+    se = (liczba // 100) % 10
+    slowa = []
+
+    if se > 0:
+        slowa.append(SETKI[se])
+    if dz == 1:
+        slowa.append(NASTKI[je])
     else:
-        if dz>0:
-            slowa.append(dziesiatki[dz])
-        if je>0:
-            slowa.append(jednostki[je])        
+        if dz > 0:
+            slowa.append(DZIESIATKI[dz])
+        if je > 0:
+            slowa.append(JEDNOSTKI[je])
     retval = " ".join(slowa)
     return retval
 
 
 def _przypadek(liczba):
     je = liczba % 10
-    dz = (liczba//10)  % 10
-    
+    dz = (liczba // 10) % 10
+
     if liczba == 1:
-        typ = 0       #jeden tysiąc"
-    elif dz==1 and je>1:  # naście tysięcy
-        typ = 2 
-    elif  2<=je<=4:
-        typ = 1       # [k-dziesiąt/set] [dwa/trzy/czery] tysiące
+        typ = 0  # jeden tysiąc"
+    elif dz == 1 and je > 1:  # naście tysięcy
+        typ = 2
+    elif  2 <= je <= 4:
+        typ = 1  # [k-dziesiąt/set] [dwa/trzy/czery] tysiące
     else:
-        typ = 2       # x tysięcy
-    
+        typ = 2  # x tysięcy
+
     return typ
+
 
 def lslownie(liczba):
     """Liczba całkowita słownie"""
     trojki = []
-    if liczba==0:
-        return u'zero'
-    while liczba>0:
+    if liczba == 0:
+        return u"zero"
+    while liczba > 0:
         trojki.append(liczba % 1000)
         liczba = liczba // 1000
-    slowa = []    
-    for i,n in enumerate(trojki):        
-        if n>0:
-            if i>0:
-                p = _przypadek(n)                
-                w = wielkie[i][p]
-                slowa.append(_slownie3cyfry(n)+u" "+w)
+    slowa = []
+    for i, n in enumerate(trojki):
+        if n > 0:
+            if i > 0:
+                p = _przypadek(n)
+                w = WIELKIE[i][p]
+                slowa.append(_slownie3cyfry(n) + u" " + w)
             else:
                 slowa.append(_slownie3cyfry(n))
     slowa.reverse()
-    return ' '.join(slowa)
+    return " ".join(slowa)
 
-def cosslownie(liczba,cos):
+
+def cosslownie(liczba, cos):
     """Słownie "ileś cosiów"
-    
+
     liczba - int
     cos - tablica przypadków [coś, cosie, cosiów]"""
-    
-    return lslownie(liczba)+u" " + cos[_przypadek(liczba)]
 
-def kwotaslownie(liczba, format = 0):
+    return lslownie(liczba) + u" " + cos[_przypadek(liczba)]
+
+
+def kwotaslownie(liczba, fmt=0):
     """Słownie złotych, groszy.
-    
+
     liczba - float, liczba złotych z groszami po przecinku
-    format - jesli 0, to grosze w postaci xx/100, słownie w p. przypadku
+    fmt - (format) jesli 0, to grosze w postaci xx/100, słownie w p. przypadku
     """
     lzlotych = int(liczba)
-    lgroszy = int (liczba * 100 + 0.5 ) % 100
-    if format!=0:
-        groszslownie = cosslownie(lgroszy, grosze)
+    lgroszy = int(liczba * 100 + 0.5) % 100
+    if fmt != 0:
+        groszslownie = cosslownie(lgroszy, GROSZE)
     else:
-        groszslownie = '%d/100' % lgroszy
-    return cosslownie(lzlotych, zlotowki) + u" " +  groszslownie
+        groszslownie = "%d/100" % lgroszy
+    return cosslownie(lzlotych, ZLOTOWKI) + u" " + groszslownie
