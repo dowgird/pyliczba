@@ -169,15 +169,11 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
 
     def test_wielkie_jedynki(self):
         kwota=1012.00
-        kwotaslownie.PISZ_WIELKIE_JEDYNKI = False
-        self.assertEqual(kwotaslownie.kwotaslownie(kwota),u"tysiąc dwanaście złotych 0/100")
-        kwotaslownie.PISZ_WIELKIE_JEDYNKI = True
+        self.assertEqual(kwotaslownie.kwotaslownie(kwota,pisz_wielkie_jedynki=False),u"tysiąc dwanaście złotych 0/100")
         self.assertEqual(kwotaslownie.kwotaslownie(kwota),u"jeden tysiąc dwanaście złotych 0/100")
 
         kwota=1001012.00
-        kwotaslownie.PISZ_WIELKIE_JEDYNKI = False
-        self.assertEqual(kwotaslownie.kwotaslownie(kwota),u"milion tysiąc dwanaście złotych 0/100")
-        kwotaslownie.PISZ_WIELKIE_JEDYNKI = True
+        self.assertEqual(kwotaslownie.kwotaslownie(kwota,pisz_wielkie_jedynki=False),u"milion tysiąc dwanaście złotych 0/100")
         self.assertEqual(kwotaslownie.kwotaslownie(kwota),u"jeden milion jeden tysiąc dwanaście złotych 0/100")
 
 if __name__ == '__main__':
