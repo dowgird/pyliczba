@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-import kwotaslownie
+from kwotaslownie import kwotaslownie
 
 class TestKwotaSlownieFunctions(unittest.TestCase):
-    """Klasa do testów jednostkowych kwotaslownie.kwotaslownie."""
+    """Klasa do testów jednostkowych """
 
     def test_jednosci_bez_groszy(self):
         """Test jedności zlotych."""
@@ -19,10 +19,10 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
             6.00: u"sześć złotych 0/100",
             7.00: u"siedem złotych 0/100",
             8.00: u"osiem złotych 0/100",
-            9.00: u"dziewięć złotych 0/100"
+            9.00: u"dziewięć złotych 0/100",
         }
         for kwota, spodziewana in testcases_jednosci_bez_groszy.iteritems():
-            self.assertEqual(kwotaslownie.kwotaslownie(kwota),spodziewana)
+            self.assertEqual(kwotaslownie(kwota),spodziewana)
 
 
     def test_nastki_bez_groszy(self):
@@ -38,10 +38,10 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
             16.00: u"szesnaście złotych 0/100",
             17.00: u"siedemnaście złotych 0/100",
             18.00: u"osiemnaście złotych 0/100",
-            19.00: u"dziewiętnaście złotych 0/100"
+            19.00: u"dziewiętnaście złotych 0/100",
         }
         for kwota, spodziewana in testcases_nastki_bez_groszy.iteritems():
-            self.assertEqual(kwotaslownie.kwotaslownie(kwota),spodziewana)
+            self.assertEqual(kwotaslownie(kwota),spodziewana)
 
 
     def test_dziesiatki_bez_groszy(self):
@@ -55,10 +55,10 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
             60.00: u"sześćdziesiąt złotych 0/100",
             70.00: u"siedemdziesiąt złotych 0/100",
             80.00: u"osiemdziesiąt złotych 0/100",
-            90.00: u"dziewięćdziesiąt złotych 0/100"
+            90.00: u"dziewięćdziesiąt złotych 0/100",
         }
         for kwota, spodziewana in testcases_dziesiatki_bez_groszy.iteritems():
-            self.assertEqual(kwotaslownie.kwotaslownie(kwota),spodziewana)
+            self.assertEqual(kwotaslownie(kwota),spodziewana)
 
 
     def test_setki_bez_groszy(self):
@@ -73,10 +73,10 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
             600.00: u"sześćset złotych 0/100",
             700.00: u"siedemset złotych 0/100",
             800.00: u"osiemset złotych 0/100",
-            900.00: u"dziewięćset złotych 0/100"
+            900.00: u"dziewięćset złotych 0/100",
         }
         for kwota, spodziewana in testcases_setki_bez_groszy.iteritems():
-            self.assertEqual(kwotaslownie.kwotaslownie(kwota),spodziewana)
+            self.assertEqual(kwotaslownie(kwota),spodziewana)
 
 
     def test_tysiace_bez_groszy(self):
@@ -95,10 +95,10 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
             11000.00: u"jedenaście tysięcy złotych 0/100",
             30000.00: u"trzydzieści tysięcy złotych 0/100",
             100000.00: u"sto tysięcy złotych 0/100",
-            300000.00: u"trzysta tysięcy złotych 0/100"
+            300000.00: u"trzysta tysięcy złotych 0/100",
         }
         for kwota, spodziewana in testcases_tysiace_bez_groszy.iteritems():
-            self.assertEqual(kwotaslownie.kwotaslownie(kwota),spodziewana)
+            self.assertEqual(kwotaslownie(kwota),spodziewana)
 
 
     def test_miliony_bez_groszy(self):
@@ -110,10 +110,10 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
             5000000.00: u"pięć milionów złotych 0/100",
             11000000.00: u"jedenaście milionów złotych 0/100",
             30000000.00: u"trzydzieści milionów złotych 0/100",
-            100000000.00: u"sto milionów złotych 0/100"
+            100000000.00: u"sto milionów złotych 0/100",
         }
         for kwota, spodziewana in testcases_miliony_bez_groszy.iteritems():
-            self.assertEqual(kwotaslownie.kwotaslownie(kwota),spodziewana)
+            self.assertEqual(kwotaslownie(kwota),spodziewana)
 
 
     def test_jeden_na_koncu_bez_groszy(self):
@@ -129,10 +129,10 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
             3001.00: u"trzy tysiące jeden złotych 0/100",
             7001.00: u"siedem tysięcy jeden złotych 0/100",
             14001.00: u"czternaście tysięcy jeden złotych 0/100",
-            1000001.00: u"jeden milion jeden złotych 0/100"
+            1000001.00: u"jeden milion jeden złotych 0/100",
         }
         for kwota, spodziewana in testcases_jeden_na_koncu_bez_groszy.iteritems():
-            self.assertEqual(kwotaslownie.kwotaslownie(kwota),spodziewana)
+            self.assertEqual(kwotaslownie(kwota),spodziewana)
 
 
     def test_trzy_na_koncu_bez_groszy(self):
@@ -148,10 +148,10 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
             3003.00: u"trzy tysiące trzy złote 0/100",
             7003.00: u"siedem tysięcy trzy złote 0/100",
             14003.00: u"czternaście tysięcy trzy złote 0/100",
-            1000003.00: u"jeden milion trzy złote 0/100"
+            1000003.00: u"jeden milion trzy złote 0/100",
         }
         for kwota, spodziewana in testcases_trzy_na_koncu_bez_groszy.iteritems():
-            self.assertEqual(kwotaslownie.kwotaslownie(kwota),spodziewana)
+            self.assertEqual(kwotaslownie(kwota),spodziewana)
 
 
     def test_siedem_na_koncu_bez_groszy(self):
@@ -167,10 +167,10 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
             3007.00: u"trzy tysiące siedem złotych 0/100",
             7007.00: u"siedem tysięcy siedem złotych 0/100",
             14007.00: u"czternaście tysięcy siedem złotych 0/100",
-            1000007.00: u"jeden milion siedem złotych 0/100"
+            1000007.00: u"jeden milion siedem złotych 0/100",
         }
         for kwota, spodziewana in testcases_siedem_na_koncu_bez_groszy.iteritems():
-            self.assertEqual(kwotaslownie.kwotaslownie(kwota),spodziewana)
+            self.assertEqual(kwotaslownie(kwota),spodziewana)
 
 
     def test_czternascie_na_koncu_bez_groszy(self):
@@ -184,10 +184,10 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
             3014.00: u"trzy tysiące czternaście złotych 0/100",
             7014.00: u"siedem tysięcy czternaście złotych 0/100",
             14014.00: u"czternaście tysięcy czternaście złotych 0/100",
-            1000014.00: u"jeden milion czternaście złotych 0/100"
+            1000014.00: u"jeden milion czternaście złotych 0/100",
         }
         for kwota, spodziewana in testcases_czternascie_na_koncu_bez_groszy.iteritems():
-            self.assertEqual(kwotaslownie.kwotaslownie(kwota),spodziewana)
+            self.assertEqual(kwotaslownie(kwota),spodziewana)
 
 
     def test_liczba_groszy_bez_odmiany(self):
@@ -199,10 +199,10 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
             1.11: u"jeden złoty 11/100",
             1.95: u"jeden złoty 95/100",
             0.25: u"zero złotych 25/100",
-            0.48: u"zero złotych 48/100"
+            0.48: u"zero złotych 48/100",
         }
         for kwota, spodziewana in testcases_liczba_groszy_bez_odmiany.iteritems():
-            self.assertEqual(kwotaslownie.kwotaslownie(kwota),spodziewana)
+            self.assertEqual(kwotaslownie(kwota),spodziewana)
 
 
     
@@ -243,20 +243,21 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
             2.73: u"dwa złote siedemdziesiąt trzy grosze",
             2.77: u"dwa złote siedemdziesiąt siedem groszy",
             2.80: u"dwa złote osiemdziesiąt groszy",
-            2.90: u"dwa złote dziewięćdziesiąt groszy" }
+            2.90: u"dwa złote dziewięćdziesiąt groszy",
+        }
 
         for kwota, spodziewana in testcases_z_groszami.iteritems():
-            self.assertEqual(kwotaslownie.kwotaslownie(kwota,1),spodziewana)
+            self.assertEqual(kwotaslownie(kwota,1),spodziewana)
 
 
     def test_wielkie_jedynki(self):
         kwota=1012.00
-        self.assertEqual(kwotaslownie.kwotaslownie(kwota,pisz_wielkie_jedynki=False),u"tysiąc dwanaście złotych 0/100")
-        self.assertEqual(kwotaslownie.kwotaslownie(kwota),u"jeden tysiąc dwanaście złotych 0/100")
+        self.assertEqual(kwotaslownie(kwota,pisz_wielkie_jedynki=False),u"tysiąc dwanaście złotych 0/100")
+        self.assertEqual(kwotaslownie(kwota),u"jeden tysiąc dwanaście złotych 0/100")
 
         kwota=1001012.00
-        self.assertEqual(kwotaslownie.kwotaslownie(kwota,pisz_wielkie_jedynki=False),u"milion tysiąc dwanaście złotych 0/100")
-        self.assertEqual(kwotaslownie.kwotaslownie(kwota),u"jeden milion jeden tysiąc dwanaście złotych 0/100")
+        self.assertEqual(kwotaslownie(kwota,pisz_wielkie_jedynki=False),u"milion tysiąc dwanaście złotych 0/100")
+        self.assertEqual(kwotaslownie(kwota),u"jeden milion jeden tysiąc dwanaście złotych 0/100")
 
 if __name__ == '__main__':
     unittest.main()
