@@ -250,15 +250,5 @@ class TestKwotaSlownieFunctions(unittest.TestCase):
         for kwota, spodziewana in testcases_z_groszami.iteritems():
             self.assertEqual(kwotaslownie(kwota,1),spodziewana)
 
-
-    def test_wielkie_jedynki(self):
-        kwota=1012.00
-        self.assertEqual(kwotaslownie(kwota,pisz_wielkie_jedynki=False),u("tysiąc dwanaście złotych 0/100"))
-        self.assertEqual(kwotaslownie(kwota),u("jeden tysiąc dwanaście złotych 0/100"))
-
-        kwota=1001012.00
-        self.assertEqual(kwotaslownie(kwota,pisz_wielkie_jedynki=False),u("milion tysiąc dwanaście złotych 0/100"))
-        self.assertEqual(kwotaslownie(kwota),u("jeden milion jeden tysiąc dwanaście złotych 0/100"))
-
 if __name__ == '__main__':
     unittest.main()
